@@ -1,0 +1,12 @@
+{
+  "groups": [{
+    "name": "upload.pictures",
+    "type": "com.vertrualNoriceBoard.config.PicturesUploadProperties",
+    "sourceType": "com.vertrualNoriceBoard.config.PicturesUploadProperties"
+  }],
+  "properties": [{
+    "name": "upload.pictures.upload-path",
+    "type": "org.springframework.core.io.Resource",
+    "sourceType": "com.vertrualNoriceBoard.config.PicturesUploadProperties"
+  }]
+}
