@@ -56,7 +56,6 @@ public class ProfileController {
 	public String showPage(Model model, Principal principal) {
 		User user = userRepository.findByUserName(principal.getName());
 		model.addAttribute("user", user);
-		System.out.println(user.getProfile());
 		return "profile";
 	}
 
