@@ -62,15 +62,9 @@
 						</div>
 						<div class="panel-body" th:unless="${user.profile}==null">
 							<div class="row" >
-								<div class="col-md-3 col-lg-3 " align="center" th:if="${user.profile.photo}!=null">
-									<img th:src="@{/pic/}+${user.profile.photo}" class="img-circle img-responsive" />
+								<div class="col-md-3 col-lg-3 " align="center">
+									<img th:src="@{/getProfilePic/}+${user.userId}" class="img-circle img-responsive" />
 								</div>
-								<div class="col-md-3 col-lg-3 " align="center" th:unless="${user.profile.photo}!=null">
-									<div th:with="picfile=${user.profile.gender}==male?'male.png':female.ico">
-										<img th:src="@{/pic/}+${picfile}" class="img-circle img-responsive" />
-									</div>
-								</div>
-								
 
 								<div class=" col-md-9 col-lg-9 ">
 									<table class="table table-user-information">

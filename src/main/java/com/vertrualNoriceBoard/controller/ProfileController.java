@@ -5,13 +5,16 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.URLConnection;
 import java.security.Principal;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.DefaultResourceLoader;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -219,6 +222,27 @@ public class ProfileController {
 
 		File file = new File(fileDetails);
 		file.delete();
+	}
+
+	// showing profile picture
+	@RequestMapping(value = "/getProfilePic/{id}")
+	public void getImageAsByteArray(HttpServletResponse response, @PathVariable String id) throws IOException {
+		Resource picture = null;
+		Profile profile = profileRepository.findOne(id);
+		if (profile.getPhoto() == null) {
+			if (profile.getGender().equalsIgnoreCase("male")) {
+				picture = new DefaultResourceLoader().getResource("file:./src/main/resources/static/pic/male.png");
+			} else {
+				picture = new DefaultResourceLoader().getResource("file:./src/main/resources/static/pic/female.ico");
+			}
+
+		} else {
+			picture = new DefaultResourceLoader()
+					.getResource("file:./src/main/resources/static/pic/" + profile.getPhoto());
+		}
+		response.setHeader("Content-Type", URLConnection.guessContentTypeFromName(picture.getFilename()));
+		IOUtils.copy(picture.getInputStream(), response.getOutputStream());
+
 	}
 
 	// ****************************End of file Upload*********************

@@ -35,6 +35,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			.antMatchers("/individualNotice/**").permitAll()
 			.antMatchers("/contactUs").permitAll()
 			.antMatchers("/allNotice").permitAll()
+			.antMatchers("/getProfilePic/**").permitAll()
 			.antMatchers("/individualNotice").permitAll()
 			.antMatchers("//updateProfile").authenticated()
 			.antMatchers("/userManage","/AdminAction/**","/noticeManage").access("hasAnyAuthority('ROLE_ADMIN','ROLE_SYSTEMADMIN')")
