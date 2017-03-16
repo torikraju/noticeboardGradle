@@ -41,7 +41,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			.antMatchers("/userManage","/AdminAction/**","/noticeManage").access("hasAnyAuthority('ROLE_ADMIN','ROLE_SYSTEMADMIN')")
 			.antMatchers("/mail","/individualMail/**").access("hasAnyAuthority('ROLE_ADMIN','ROLE_SYSTEMADMIN')")
 			.antMatchers("/adminManage","/SystemAdminAction/**","/createAdmin").access("hasAuthority('ROLE_SYSTEMADMIN')")
-			.antMatchers("/bootstrap/**","/pic/**").permitAll()
+			.antMatchers("/bootstrap/**","/pic/**","/webjars/**").permitAll()
+			.antMatchers("/chat", "/mywebsocket/**", "/topic/**","/app/**").access("isAuthenticated()")
 			.antMatchers("/login","/registration").access("!isAuthenticated()")
 			.anyRequest().denyAll()
 			.and().rememberMe();

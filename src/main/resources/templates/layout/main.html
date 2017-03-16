@@ -94,6 +94,7 @@
 					<a th:href="@{/postNotice}" class="list-group-item">Post Notice</a> 
 					<a th:href="@{/allNotice}" class="list-group-item">Show all Notice</a> 
 					<a sec:authorize="isAuthenticated()" th:href="@{/yourNotice}" class="list-group-item">My Notice</a>
+					<a sec:authorize="isAuthenticated()" th:href="@{/chat}" class="list-group-item">Chat</a>
 				</div>
 			</div>
 			<div class="col-md-9">
@@ -140,5 +141,13 @@
 			$("#example").dataTable();
 		})
 	</script>
+	
+	
+	<script src="/webjars/jquery/jquery.min.js"></script>
+	<script src="/webjars/sockjs-client/sockjs.min.js"></script>
+	<script src="/webjars/stomp-websocket/stomp.min.js"></script>
+	<script th:src="@{/bootstrap/js/app.js}"></script>
+	
+	
 </body>
 </html>
