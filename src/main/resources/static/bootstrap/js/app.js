@@ -41,7 +41,7 @@ function showGreeting(name,message) {
 }
 
 $(function () {
-    $("form").on('submit', function (e) {
+    $("#target1, #target2").on('submit', function (e) {
         e.preventDefault();
     });
     $( "#connect" ).click(function() { connect(); });
